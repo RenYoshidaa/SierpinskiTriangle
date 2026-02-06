@@ -1,16 +1,27 @@
-public void setup()
-{
-
+float limit = 20; 
+void setup() {
+  size(600,600);
+  background(255);
+  noLoop();
 }
-public void draw()
-{
 
+void draw(){
+  background(255);
+  sierpinski(50,550,500);
 }
-public void mouseDragged()//optional
-{
+  void sierpinski(float x, float y, float len){
 
+if (len<=limit){
+  triangle(x,y,x+len,y,x+len/2,y-len);
+}else{
+float half = len/2;
+sierpinski(x,y,half);
+sierpinski(x+half, y, half);
+sierpinski(x+half/2,y-half,half);
 }
-public void sierpinski(int x, int y, int len) 
-{
+}
 
+void keyPressed(){
+  limit +=5;
+  redraw();
 }
